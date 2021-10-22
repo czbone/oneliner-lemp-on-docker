@@ -70,6 +70,15 @@ else
     exit 1
 fi
 
+# Check if Docker and Docker Compose preinstalled.
+if [ -x "$(command -v docker)" ]; then
+    echo "Update docker"
+    # command
+else
+    echo "Docker is not installed. You must launch command oneliner 'czbone/oneliner-env'"
+    exit 1
+fi
+
 echo "########################################################################"
 echo "# $DIST_NAME"
 echo "# START BUILDING ENVIRONMENT"
