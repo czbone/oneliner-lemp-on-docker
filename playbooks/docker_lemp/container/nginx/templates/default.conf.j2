@@ -1,0 +1,32 @@
+server {
+    listen 80 default_server;
+    listen 443 default_server ssl;
+    
+    #server_name _;
+    server_name {{ default_domain_name }};
+    root /var/www/html;
+    index index.php index.html;
+
+    #
+    # SSL configration
+    #
+    #listen       443 ssl;
+    ssl_certificate /etc/nginx/default_ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/default_ssl/nginx.key;
+    #ssl_reject_handshake on;    # permit no cert file
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # pass the PHP scripts to FastCGI server listening
+    #
+    location ~ \.php$ {
+        fastcgi_pass php:9000;      # 'php' is configured host name in /etc/hosts
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+}

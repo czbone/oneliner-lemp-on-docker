@@ -16,7 +16,7 @@
 readonly GITHUB_USER="czbone"
 readonly GITHUB_REPO="oneliner-lemp-on-docker"
 readonly WORK_DIR=/root/${GITHUB_REPO}_work
-readonly PLAYBOOK="docker_env"
+readonly PLAYBOOK="docker_lemp"
 
 # check root user
 readonly USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
