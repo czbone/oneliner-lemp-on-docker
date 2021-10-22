@@ -2,15 +2,14 @@
 # 
 # Script Name: build_env.sh
 #
-# Version:      1.1.0
+# Version:      1.0.0
 # Author:       Naoki Hirata
 # Date:         2021-10-22
 # Usage:        build_env.sh [-test]
 # Options:      -test      test mode execution with the latest source package
 # Description:  This script builds LEMP environment on Docker server with the one-liner command.
 # Version History:
-#               1.0.0  (2021-09-07) initial version
-#               1.1.0  (2021-10-22) Rock Linux, Alma Linux supported
+#               1.0.0  (2021-10-22) initial version
 # License:      MIT License
 
 # Define macro parameter
@@ -74,13 +73,13 @@ fi
 if [ -x "$(command -v docker)" ]; then
     echo "Check Docker installed - OK"
 else
-    echo "Docker is not installed. You must previously launch command oneliner 'czbone/oneliner-env(https://github.com/czbone/oneliner-env)'."
+    echo "Docker is not installed. You must previously launch command oneliner 'czbone/oneliner-env' at https://github.com/czbone/oneliner-env."
     exit 1
 fi
 if [ -x "$(command -v docker-compose)" ]; then
     echo "Check Docker Compose installed - OK"
 else
-    echo "Docker Compose is not installed. You must previously launch command oneliner 'czbone/oneliner-env(https://github.com/czbone/oneliner-env)'."
+    echo "Docker Compose is not installed. You must previously launch command oneliner 'czbone/oneliner-env' at https://github.com/czbone/oneliner-env."
     exit 1
 fi
 
