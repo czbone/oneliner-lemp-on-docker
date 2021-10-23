@@ -206,16 +206,16 @@
       file:
         path: '/vagrant/playbooks/container/nginx/build'
         state: directory
-        owner: vagrant
-        group: vagrant
+        # owner: vagrant
+        # group: vagrant
         mode: '0755'
 
     - name: Create Dockerfile
       template:
         src: './container/nginx/templates/Dockerfile.j2'
         dest: '/vagrant/playbooks/container/nginx/build/Dockerfile'
-        owner: vagrant
-        group: vagrant
+        # owner: vagrant
+        # group: vagrant
         mode: '0644'
 
     - name: Build nginx image and push
