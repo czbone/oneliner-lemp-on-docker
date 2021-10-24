@@ -204,18 +204,18 @@
     #
     - name: Create build directory
       file:
-        path: '/vagrant/playbooks/container/nginx/build'
+        path: './container/nginx/build'
         state: directory
-        # owner: vagrant
-        # group: vagrant
+        owner: "{{ ansible_env.SUDO_USER }}"
+        group: "{{ ansible_env.SUDO_USER }}"
         mode: '0755'
 
     - name: Create Dockerfile
       template:
         src: './container/nginx/templates/Dockerfile.j2'
-        dest: '/vagrant/playbooks/container/nginx/build/Dockerfile'
-        # owner: vagrant
-        # group: vagrant
+        dest: './container/nginx/build/Dockerfile' 
+        owner: "{{ ansible_env.SUDO_USER }}"
+        group: "{{ ansible_env.SUDO_USER }}"
         mode: '0644'
 
     - name: Build nginx image and push
