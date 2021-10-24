@@ -206,16 +206,20 @@
       file:
         path: './container/nginx/build'
         state: directory
-        owner: "{{ ansible_env.SUDO_USER }}"
-        group: "{{ ansible_env.SUDO_USER }}"
+        #owner: "{{ ansible_env.SUDO_USER }}"
+        #group: "{{ ansible_env.SUDO_USER }}"
+        owner: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"
+        group: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"
         mode: '0755'
 
     - name: Create Dockerfile
       template:
         src: './container/nginx/templates/Dockerfile.j2'
         dest: './container/nginx/build/Dockerfile' 
-        owner: "{{ ansible_env.SUDO_USER }}"
-        group: "{{ ansible_env.SUDO_USER }}"
+        #owner: "{{ ansible_env.SUDO_USER }}"
+        #group: "{{ ansible_env.SUDO_USER }}"
+        owner: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"
+        group: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"
         mode: '0644'
 
     - name: Build nginx image and push
