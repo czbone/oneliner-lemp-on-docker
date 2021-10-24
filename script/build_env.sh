@@ -15,7 +15,7 @@
 # Define macro parameter
 readonly GITHUB_USER="czbone"
 readonly GITHUB_REPO="oneliner-lemp-on-docker"
-#readonly WORK_DIR=/root/${GITHUB_REPO}_work
+readonly REPO_DIR=/root/ansible/${GITHUB_REPO}
 readonly WORK_DIR=/root/ansible/_work
 readonly PLAYBOOK="docker_lemp"
 
@@ -165,6 +165,8 @@ mv ${destdirname} ${GITHUB_REPO}
 echo ${filename}" unarchived"
 
 # launch ansible
-cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
+mv ${WORK_DIR}/${GITHUB_REPO} ${REPO_DIR}
+#cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
+cd ${REPO_DIR}/playbooks/${PLAYBOOK}
 ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
 ansible-playbook -i localhost, main.yml
