@@ -16,7 +16,7 @@
 readonly GITHUB_USER="czbone"
 readonly GITHUB_REPO="oneliner-lemp-on-docker"
 #readonly WORK_DIR=/root/${GITHUB_REPO}_work
-readonly WORK_DIR=/root/ansible/${GITHUB_REPO}/_work
+readonly WORK_DIR=/root/ansible/_work
 readonly PLAYBOOK="docker_lemp"
 
 # check root user
@@ -135,7 +135,8 @@ fi
 filename=${GITHUB_REPO}_${version}.tar.gz
 filepath=${WORK_DIR}/$filename
 
-# Set current directory
+# Set current directory at work directory
+rm -rf ${WORK_DIR}
 mkdir -p ${WORK_DIR}
 cd ${WORK_DIR}
 savefilelist=`ls -1`
