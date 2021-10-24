@@ -15,7 +15,8 @@
 # Define macro parameter
 readonly GITHUB_USER="czbone"
 readonly GITHUB_REPO="oneliner-lemp-on-docker"
-readonly WORK_DIR=/root/${GITHUB_REPO}_work
+#readonly WORK_DIR=/root/${GITHUB_REPO}_work
+readonly WORK_DIR=/root/ansible/${GITHUB_REPO}/_work
 readonly PLAYBOOK="docker_lemp"
 
 # check root user
