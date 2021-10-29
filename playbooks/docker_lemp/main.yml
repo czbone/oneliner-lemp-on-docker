@@ -28,6 +28,8 @@
     - geerlingguy.ntp
 
   pre_tasks:
+    - selinux: state=disabled
+      become: True
 
   tasks:
     - name: Install minimal command
