@@ -13,10 +13,13 @@
 # 内容
 Ansibleのローカル実行でDocker環境をインストールし、Dockerコンテナ上にLEMP環境を構築します。
 
+## LEMP環境
+
+- db(Dockerコンテナ) - Mariadb最新
+- PHP(Dockerコンテナ) - PHP8最新
+- Nginx(Dockerコンテナ) - Nginx最新
 
 ## 主なインストールモジュール
-
-### Docker環境
 
 - docker-ce
 - docker-ce-cli
@@ -29,3 +32,9 @@ Ansibleのローカル実行でDocker環境をインストールし、Dockerコ�
 ```
 curl https://raw.githubusercontent.com/czbone/oneliner-lemp-on-docker/master/script/build_env.sh | bash
 ```
+
+## テスト
+以下のURLにアクセスし、エラーなしに画面が表示されればOKです。
+
+- http://[IPアドレス]/_sample/index.php
+- http://[IPアドレス]/_sample/index2.php
