@@ -1,0 +1,10 @@
+FROM nginx:alpine
+
+RUN apk --no-cache add openssl
+RUN openssl dhparam -dsaparam -out /etc/nginx/dhparam.pem 4096
+RUN mkdir /etc/nginx/default_ssl/ && openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/nginx/default_ssl/nginx.key -out /etc/nginx/default_ssl/nginx.crt -subj "/C={{ ssl_csr_country_name }}/ST={{ ssl_csr_state_name }}/L={{ ssl_csr_city_name }}/O={{ ssl_csr_organization_name }}/CN={{ ssl_csr_common_name }}"
+
+# Set time zone
+RUN apk --no-cache add tzdata && \
+    cp /usr/share/zoneinfo/{{ docker_container_timezone }} /etc/localtime && \
+    apk del tzdata

@@ -1,0 +1,8 @@
+FROM php:fpm-alpine
+
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Set time zone
+RUN apk --no-cache add tzdata && \
+    cp /usr/share/zoneinfo/{{ docker_container_timezone }} /etc/localtime && \
+    apk del tzdata

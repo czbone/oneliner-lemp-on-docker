@@ -1,0 +1,24 @@
+#
+# Docker host configuration
+#
+# server timezone
+ntp_timezone: Asia/Tokyo
+
+# firewall for Debian only
+firewall_allowed_tcp_ports:
+  - "22"
+  - "25"
+  - "80"
+  - "443"
+
+#
+# Docker container configuration
+#
+docker_container_timezone: Asia/Tokyo
+
+# PHP-FPM configuration
+php_fpm_max_children: 10
+php_fpm_start_servers: 5
+php_fpm_min_spare_servers: 5
+php_fpm_max_spare_servers: 10
+php_fpm_max_requests: 100

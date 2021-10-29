@@ -1,0 +1,6 @@
+---
+roles:
+  - geerlingguy.ntp
+  
+collections:
+  - community.docker
