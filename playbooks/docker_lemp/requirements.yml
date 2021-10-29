@@ -1,7 +1,0 @@
----
-roles:
-  - webofmars.dummy
-  - geerlingguy.ntp
-  
-collections:
-  - community.docker
