@@ -11,6 +11,9 @@ firewall_allowed_tcp_ports:
   - "80"
   - "443"
 
+# SSH configuration
+ssh_default_port: 22
+
 #
 # Docker container configuration
 #
