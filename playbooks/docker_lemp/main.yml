@@ -36,7 +36,7 @@
         name: httpd
         state: absent
     - shell: echo $(cat /etc/ssh/sshd_config | awk '/^Port/{ print $2 }')
-        register: port_no
+      register: port_no
     - debug: msg="{{port_no.stdout}}"
 
   tasks:
