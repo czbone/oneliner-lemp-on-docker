@@ -4,13 +4,6 @@
 # server timezone
 ntp_timezone: Asia/Tokyo
 
-# firewall for Debian only
-firewall_allowed_tcp_ports:
-  - "22"
-  - "25"
-  - "80"
-  - "443"
-
 # SSH configuration
 ssh_default_port: 22
 
