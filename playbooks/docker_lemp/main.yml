@@ -35,15 +35,14 @@
       dnf:
         name: httpd
         state: absent
-
-  tasks:
     - name : Get SSH port
       shell: echo $(cat /etc/ssh/sshd_config | awk '/^Port/{ print $2 }')
       register: active_ssh_port
     - set_fact:
-        ssh_port: "{{ active_ssh_port.stdout }} | default(ssh_default_port) }}"
+        ssh_port: "{{ active_ssh_port.stdout | default(ssh_default_port) }}"
     - debug: msg="{{ ssh_port }}"
 
+  tasks:
     - name: Install minimal command
       dnf:
         name:
