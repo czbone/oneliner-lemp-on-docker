@@ -40,7 +40,6 @@
       register: active_ssh_port
     - set_fact:
         ssh_port: "{{ active_ssh_port.stdout | default(ssh_default_port, true) }}"
-    - debug: msg="{{ ssh_port }}"
 
   tasks:
     - name: Install minimal command
