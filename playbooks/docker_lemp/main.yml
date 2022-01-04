@@ -31,6 +31,10 @@
   pre_tasks:
     - selinux: state=disabled
       become: True
+    - name: Remove the Apache package
+      dnf:
+        name: httpd
+        state: absent
 
   tasks:
     - name: Install minimal command
