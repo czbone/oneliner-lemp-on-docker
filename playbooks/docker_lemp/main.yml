@@ -164,8 +164,6 @@
         recreate: yes
         state: started
         restart_policy: always
-#        ports: 3306:3306
-#        exposed_ports: 3306
         networks:
           - name: local-network
         env:
@@ -214,8 +212,6 @@
         recreate: yes
         state: started
         restart_policy: always
-#        ports: 9000:9000
-#        exposed_ports: 9000
         networks:
           - name: local-network
         log_driver: journald
@@ -262,9 +258,6 @@
         ports:
           - 80:80
           - 443:443
-        # exposed_ports: 
-        #   - "80"
-        #   - "443"
         networks:
           - name: local-network
         log_driver: journald
@@ -280,15 +273,5 @@
     #
     # ファイアウォールの設定
     #
-    # - name: Copy firewall configration file
-    #   template: src=iptables.conf.j2 dest=/etc/sysconfig/iptables.conf
-    # - name: Create firewall
-    #   template: src=iptables.service.j2 dest=/lib/systemd/system/iptables.service mode=644
-    # - name: Start firewall
-    #   systemd:
-    #     name: iptables
-    #     state: restarted
-    #     daemon_reload: yes
-    #     enabled: yes
     - name: Restart Firewalld service
       service: name=firewalld state=restarted enabled=yes
