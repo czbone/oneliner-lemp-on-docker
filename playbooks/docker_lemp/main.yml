@@ -30,7 +30,6 @@
         
   pre_tasks:
     - selinux: state=disabled
-      become: True
     - name: Remove Apache package
       dnf:
         name: httpd
@@ -223,7 +222,7 @@
         log_options:
           tag: "{{ '{{' }}.ImageName{{ '}}' }}/{{ '{{' }}.Name{{ '}}' }}/{{ '{{' }}.ID{{ '}}' }}"
         volumes:
-          - '{{ www_document_root }}:/var/www/html:ro'   # www directory
+          - '{{ www_document_root }}:/var/www/html:rw'   # www directory
           - '/docker/php/php.ini:/usr/local/etc/php/conf.d/my.ini:ro'
           - '/docker/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro'
 
@@ -281,14 +280,15 @@
     #
     # ファイアウォールの設定
     #
-    - name: Copy firewall configration file
-      template: src=iptables.conf.j2 dest=/etc/sysconfig/iptables.conf
-    - name: Create firewall
-      template: src=iptables.service.j2 dest=/lib/systemd/system/iptables.service mode=644
-    - name: Start firewall
-      systemd:
-        name: iptables
-        state: restarted
-        daemon_reload: yes
-        enabled: yes
-
+    # - name: Copy firewall configration file
+    #   template: src=iptables.conf.j2 dest=/etc/sysconfig/iptables.conf
+    # - name: Create firewall
+    #   template: src=iptables.service.j2 dest=/lib/systemd/system/iptables.service mode=644
+    # - name: Start firewall
+    #   systemd:
+    #     name: iptables
+    #     state: restarted
+    #     daemon_reload: yes
+    #     enabled: yes
+    - name: Restart Firewalld service
+      service: name=firewalld state=restarted enabled=yes
